@@ -1,0 +1,147 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacsystemFont, sans-serif;
+}
+
+body {
+    background-color: #fff;
+}
+.navbar {
+    background: rgba(255,255,255,0.8);
+    padding: 15px 0;
+}
+
+.navbar ul{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    font-size: 14px;
+}
+.navbar ul li a {
+    color: #000;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.navbar ul li a:hover{
+    color: #0066cc;
+    text-decoration: underline;
+}
+.container {
+    display:flex;
+    flex-direction:  column;
+    height: 100vh;
+    padding: 50px 200px 200px;
+}
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    font-family:Helvetica;
+
+}
+form input {
+    height: 30px;
+    padding:10px;
+}
+form input, textarea{
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    padding: 10px; 
+}
+.experience {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.container div {
+  background-color: #f1eded;
+  border-radius: 2em;
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+  width: auto;
+}
+.personal-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    
+}
+
+.personal-info div {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 6px;
+
+}
+.skills-interests-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+}
+.skills-interests-wrapper .getskills, .skills-interests-wrapper .getinterests {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 15px;
+    text-align: left;
+    align-content: space-around;
+    align-items: space-around;
+}
+.skills-interests-wrapper .getskills textarea, .skills-interests-wrapper .getinterests textarea {
+    height: 30px;
+}
+.profile-section{
+    align-content: space-around;
+}
+.profile-section textarea{
+    height: 70%;
+    width: 70%;
+    
+}
+.experience .job1 {
+    text-align: left;
+
+}
+.hero {
+    
+    padding: 80px 20px;
+}
+.hero h1{
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.hero h2{
+    font-size: 46px;
+    font-weight: 500;
+}
+
+.hero p{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.links a{
+    margin: 10px;
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+footer {
+    position:fixed;
+    bottom:0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}

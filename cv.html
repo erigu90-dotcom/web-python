@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/style.css">
+    <title>CV Generator</title>
+</head>
+<body>
+    <!--Navbar-->
+    <header class="navbar">
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Portfolio</a></li>
+                <li><a href="">Platforms</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+    
+        <h1>CV Generator</h1>
+    <form method="POST" enctype="multipart/form-data">
+
+            <div class="personal-info"> 
+                <div class=getphoto>
+                    <!-- Profile photo -->
+                    <label>Profile photo</label><br>
+                    <input type="file" name="photo" accept="image/*"><br><br>
+                </div>
+                <div class="getname">
+                    <!-- Personal Information get data  -->
+                    <label>Full name:</label><br>
+                    <input type="text" name="name" required><br><br>
+                </div>
+                <div class="getocupation">
+                    <label>Occupation:</label><br>
+                    <input type="text" name="ocupation" required><br><br>
+                </div>
+                <div class="getemail">
+                    <label>Email:</label><br>
+                    <input type="email" name="email"><br><br>
+                </div>
+                <div class="getphone">
+                    <label>Phone:</label><br>
+                    <input type="text" name="phone"><br><br>
+                </div>
+                <div class="getwebsite">
+                    <label>Website:</label><br>
+                    <input type="text" name="website"><br><br>
+                </div>
+            </div>
+            <div class="skills-interests-wrapper">
+                <div class="getskills">
+                    <!--  Skills & Interests get data  -->
+                    <label>Skills:</label><br>
+                    <textarea name="skills1" rows="1"></textarea><br><br>
+                    <textarea name="skills2" rows="1"></textarea><br><br>
+                    <textarea name="skills3" rows="1"></textarea><br><br>
+                </div>
+                <div class="getinterests">
+                    <label>Interests:</label><br>
+                    <textarea name="interests1" rows="1"></textarea><br><br>
+                    <textarea name="interests2" rows="1"></textarea><br><br>
+                    <textarea name="interests3" rows="1"></textarea><br><br>
+                </div>
+            </div>
+            <div class="profile-section">
+                <!-- PROFILE CON CONTROL -->
+                <label>Profile (max 300 characters)</label><br><br>
+                <textarea 
+                    id="profile"
+                    name="profile"
+                    rows="5"
+                    maxlength="300"
+                ></textarea>
+                <p id="char-count">300 characters remaining</p>
+
+                <br>
+            </div>
+            <div class="experience">
+                <div class="exp1">
+                    <!--  Experience get data  -->
+                    <label>Experience 1:</label><br>
+                    <label>Position:</label><br>
+                    <textarea name="experience_position" rows="1"></textarea><br><br>
+                    <label>Company:</label><br>
+                    <textarea name="experience_company" rows="1"></textarea><br><br>
+                    <label>Date:</label><br>
+                    <textarea name="experience_date" rows="1"></textarea><br><br>
+                    <!-- Experience Role CON CONTROL -->
+                    <label>Duties (max 220 characters)</label><br>
+                    <textarea id="experience_role" name="experience_role" rows="5" maxlength="140"></textarea><br>
+                    <p id="char-count">220 characters remaining</p>
+                </div>
+                <div class="exp2">
+                    <label>Experience 2:</label><br>
+                    <label>Position:</label><br>
+                    <textarea name="experience_position2" rows="1"></textarea><br><br>
+                    <label>Company:</label><br>
+                    <textarea name="experience_company2" rows="1"></textarea><br><br>
+                    <label>Date:</label><br>
+                    <textarea name="experience_date2" rows="1"></textarea><br><br>
+                    <!-- Experience Role CON CONTROL -->
+                    <label>Duties (max 220 characters)</label><br>
+                    <textarea id="experience_role2" name="experience_role2" rows="5" maxlength="140"></textarea><br>
+                    <p id="char-count">220 characters remaining</p>
+                </div>
+            </div>
+            <div class="education">
+                <!--  Education get data  -->
+                <label>Education 1:</label><br>
+                <label>Degree:</label><br>
+                <textarea name="education1" rows="1"></textarea><br><br>
+                <label>Institute:</label><br>
+                <textarea name="education_institute1" rows="1"></textarea><br><br
+                <label>Date:</label><br>
+                <textarea name="education1_date_degree" rows="1"></textarea><br><br>
+            </div>
+            <div class="ocupation">
+                <!--  Certifications get data  -->
+                <label>Certification 1:</label><br>
+                <label>Title:</label><br>
+                <textarea name="certification1" rows="1"></textarea><br><br>
+                <label>Issuer:</label><br>
+                <textarea name="certification_issuer1" rows="1"></textarea><br><br>
+                <label>Date:</label><br>
+                <textarea name="certification1_date" rows="1"></textarea><br><br>
+            </div>
+            <div class="portfolio">
+                <!--Portfolio get data  -->
+                <label>Portfolio 1:</label><br>
+                <textarea name="portfolio1" rows="1"></textarea><br><br>
+                <label>description:(250 characters max)</label><br>
+                <textarea id="portfolio1_text" name="portfolio1_text" rows="2"></textarea><br><br>
+            </div>
+            <button type="submit">Generate CV PDF</button>
+            <a href="/descargar"><button type="button">Descargar CV</button></a>
+        </form>
+    </main>
+    <!-- SCRIPT -->
+    <script>
+        function setupCharCounter(inputId, counterId, maxChars, alertMsg) {
+            const input = document.getElementById(inputId);
+            const counter = document.getElementById(counterId);
+            let alertShown = false;
+
+            input.addEventListener("input", () => {
+                if (input.value.length > maxChars) {
+                    input.value = input.value.slice(0, maxChars);
+                    if (!alertShown) {
+                        alert(alertMsg);
+                        alertShown = true;
+                    }
+                } else {
+                    alertShown = false;
+                }
+                const remaining = maxChars - input.value.length;
+                counter.textContent = `${remaining} characters remaining`;
+            });
+        }
+
+        setupCharCounter("profile", "profile-count", 300, "⚠️ Maximum 300 characters allowed.");
+        setupCharCounter("experience_role", "experience-count", 220, "⚠️ Maximum 220 characters allowed.");
+        setupCharCounter("experience_role2", "experience2-count", 220, "⚠️ Maximum 220 characters allowed.");
+        setupCharCounter("portfolio1_text", "portfolio1-count", 250, "⚠️ Maximum 250 characters allowed.");
+
+    </script>
+
+</body>
+</html>
+
